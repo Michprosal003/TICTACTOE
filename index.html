@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despertar al Robot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <img src="https://yt3.googleusercontent.com/jUXU46JEYO1R4kG9eI8TKW7tkrGaJ8cEtVwUT_JP_K_0LKxQJetHWOa4LV-z7BeGUbXY_WoHlg=w1060-fcrop64=1,00005a57ffffa5a8-k-c0xffffffff-no-nd-rj" alt="Descripción de la imagen" />
+
+
+    <h1>TIC TAC TOE </h1>
+    <button id="wakeUpRobot" class="btn">DESPERTAR AL ROBOT </button>
+    <div id="dialog" class="dialog hidden">
+        <p>Hola, ¿cómo te llamas?</p>
+        <input type="text" id="playerName" placeholder="Escribe tu nombre" />
+        <button id="submitName" class="btn">Enviar</button>
+    </div>
+    <div id="response" class="response hidden">
+        <p id="greetingMessage"></p>
+        <button id="playYes" class="btn">Sí</button>
+        <button id="playNo" class="btn">No</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<script>
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const wakeUpButton = document.getElementById('wakeUpRobot');
+    const dialog = document.getElementById('dialog');
+    const submitNameButton = document.getElementById('submitName');
+    const responseDiv = document.getElementById('response');
+    const greetingMessage = document.getElementById('greetingMessage');
+    const playYesButton = document.getElementById('playYes');
+    const playNoButton = document.getElementById('playNo');
+    const playerNameInput = document.getElementById('playerName');
+
+    wakeUpButton.addEventListener('click', function() {
+        dialog.classList.remove('hidden'); // Muestra el diálogo
+    });
+
+    submitNameButton.addEventListener('click', function() {
+        const playerName = playerNameInput.value.trim();
+        if (playerName) {
+            dialog.classList.add('hidden'); // Oculta el diálogo
+            greetingMessage.textContent = `¡Hola, ${playerName}! ¿Quieres jugar?`;
+            responseDiv.classList.remove('hidden'); // Muestra la respuesta
+        } else {
+            alert('Por favor, ingresa tu nombre.');
+        }
+    });
+
+    playYesButton.addEventListener('click', function() {
+        window.location.href = 'selection.html'; // Cambia a la página de selección de dificultad
+    });
+
+    playNoButton.addEventListener('click', function() {
+        alert('¡Que tengas un buen día!');
+    });
+});
+
+</script>
